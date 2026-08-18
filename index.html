@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="ADAPTLEARN — Spider-Verse Neo-Brutalist Gamified Multiverse Learning Dashboard. Track neural activity, courses, missions, review queues, and streaks.">
+    <title>ADAPTLEARN | Multiverse Learning Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Bangers&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- Parallax Multiverse Background Layers -->
+    <div class="antigravity-bg" id="antigravity-bg">
+        <div class="bg-layer bg-layer--stars" id="layer-stars"></div>
+        <div class="bg-layer bg-layer--cityscape" id="layer-cityscape"></div>
+        <div class="bg-layer bg-layer--comic-grid" id="layer-comic-grid"></div>
+        <div class="bg-layer bg-layer--shards" id="layer-shards"></div>
+    </div>
+
+    <!-- ========== 1. LEFT SIDEBAR NAVIGATION ========== -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Brand Header: ADAPTLEARN in bold comic-slab with neon red accent dot -->
+        <div class="sidebar-logo">
+            <div class="logo-icon-wrap">
+                <svg class="logo-spider-glyph" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="36" height="36" rx="6" fill="#121214" stroke="#000000"
+                        stroke-width="2.5" />
+                    <path d="M20 5 L20 35 M5 20 L35 20 M9 9 L31 31 M31 9 L9 31" stroke="#00F0FF" stroke-width="1.8"
+                        stroke-dasharray="3 2" />
+                    <polygon points="20,10 26,17 24,24 20,29 16,24 14,17" fill="#FF2A55" stroke="#000000"
+                        stroke-width="1.5" />
+                    <circle cx="20" cy="20" r="3" fill="#FFE600" />
+                </svg>
+            </div>
+            <span class="logo-text">ADAPT<span class="logo-learn">LEARN</span><span class="logo-dot"></span></span>
+        </div>
+
+        <!-- Navigation Links (7 Main Tabs) -->
+        <nav class="sidebar-nav">
+            <!-- 1. Dashboard (Active state with bold border + cyan/red glitch highlight) -->
+            <button class="nav-item active" data-page="dashboard" id="nav-dashboard">
+                <div class="nav-icon-box">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                </div>
+                <span>Dashboard</span>
+                <div class="nav-glitch-badge">LIVE</div>
+            </button>
+
+            <!-- 2. Course -->
+            <button class="nav-item" data-page="course" id="nav-course">
+                <div class="nav-icon-box">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                </div>
+                <span>Course</span>
+            </button>
+
+            <!-- 3. My Learning -->
+            <button class="nav-item" data-page="my-learning" id="nav-my-learning">
+                <div class="nav-icon-box">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                    </svg>
+                </div>
+                <span>My Learning</span>
+            </button>
+
+            <!-- 4. Projects -->
+            <button class="nav-item" data-page="projects" id="nav-projects">
+                <div class="nav-icon-box">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                    </svg>
+                </div>
+                <span>Projects</span>
+            </button>
+
+            <!-- 5. Interview Prep -->
+            <button class="nav-item" data-page="interview-prep" id="nav-interview-prep">
+                <div class="nav-icon-box">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                </div>
+                <span>Interview prep</span>
+            </button>
+
+            <!-- 6. Analytics -->
+            <button class="nav-item" data-page="analytics" id="nav-analytics">
+                <div class="nav-icon-box">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10" />
+                        <line x1="12" y1="20" x2="12" y2="4" />
+                        <line x1="6" y1="20" x2="6" y2="14" />
+                    </svg>
+                </div>
+                <span>Analytics</span>
+            </button>
+
+            <!-- 7. Profile -->
+            <button class="nav-item" data-page="profile" id="nav-profile">
+                <div class="nav-icon-box">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </div>
+                <span>Profile</span>
+            </button>
+        </nav>
+
+        <!-- Bottom Sidebar Widget: Daily Streak Card -->
+        <div class="sidebar-streak-wrap">
+            <div class="daily-streak-card neo-box">
+                <div class="streak-card-top">
+                    <span class="streak-flame-icon">🔥</span>
+                    <span class="streak-badge-yellow">12 DAY ACTIVITY</span>
+                </div>
+                <div class="streak-card-body">
+                    <div class="streak-meta-text">Multiverse Leap Streak</div>
+                    <div class="streak-mini-progress">
+                        <div class="streak-mini-bar" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings & Sign Out Anchored at Bottom -->
+        <div class="sidebar-bottom">
+            <button class="nav-item nav-item--small" id="nav-settings">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0 2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                </svg>
+                <span>Settings</span>
+            </button>
+            <button class="nav-item nav-item--small nav-item--signout" id="nav-signout">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+                <span>Sign Out</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ========== MAIN CONTENT WRAPPER ========== -->
+    <div class="main-wrapper">
+        <!-- ========== 2. TOP HEADER ========== -->
+        <header class="header" id="header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <div class="header-dimension-tag">
+                    <span class="pulse-dot"></span>
+                    <span class="dim-label">EARTH-1610 // CONNECTED</span>
+                </div>
+            </div>
+
+            <!-- Global Search Bar: Centered input with hard-edged border -->
+            <div class="header-search">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" class="search-input neo-input" id="search-input"
+                    placeholder="Search courses, topics/concept..." autocomplete="off">
+                <kbd class="search-kbd">⌘K</kbd>
+            </div>
+
+            <!-- Top Right Actions: Theme toggle & notification icons -->
+            <div class="header-right">
+                <!-- Notifications icon -->
+                <button class="header-action-btn neo-btn-icon" id="notif-btn" aria-label="Notifications"
+                    title="Notifications">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    </svg>
+                    <span class="notif-badge">3</span>
+                </button>
+
+                <!-- Dark / Light Mode Quick Toggle -->
+                <div class="theme-toggle" id="theme-toggle" role="button" aria-label="Toggle dark/light mode"
+                    tabindex="0">
+                    <div class="theme-toggle-track">
+                        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                        <div class="theme-toggle-thumb"></div>
+                    </div>
+                </div>
+
+                <!-- User Profile Avatar -->
+                <div class="header-avatar" id="header-avatar" title="Miles Morales">
+                    <div class="avatar-ring">
+                        <div class="avatar-inner">M</div>
+                    </div>
+                    <div class="avatar-status"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== 3. MAIN CONTENT GRID ========== -->
+        <main class="content" id="content">
+
+            <!-- ===== TAB 1: DASHBOARD PAGE ===== -->
+            <section class="page page--dashboard active" id="page-dashboard">
+
+                <!-- ─── TOP SECTION: HERO BANNER & REVIEW QUEUE CARD ─── -->
+                <div class="dashboard-top-section">
+                    <!-- Hero Banner (Multiverse Learning - 70% width) -->
+                    <div class="hero-banner neo-card neo-card--hero">
+                        <!-- Gradient Wash Background with Stylized Miles Silhouette -->
+                        <div class="hero-bg-wash"></div>
+                        <div class="hero-visual-graphic">
+                            <!-- Integrated Miles Morales Artwork with Neo-Brutalist Frame -->
+                            <div class="hero-character-portal">
+                                <div class="portal-ring-outer"></div>
+                                <div class="portal-ring-inner"></div>
+                                <img src="unnamed.jpg" alt="Miles Morales Spider-Verse" class="hero-character-img">
+                                <div class="hero-character-glow"></div>
+                            </div>
+                        </div>
+
+                        <div class="hero-content">
+                            <!-- Top Tag: Electric yellow pill tag reading Multiverse Learning -->
+                            <div class="hero-tag-wrap">
+                                <span class="tag-pill tag-pill--yellow">⚡ Multiverse Learning</span>
+                                <span class="tag-pill tag-pill--cyan">DIMENSION: 1610-A</span>
+                            </div>
+
+                            <!-- Main Title: Heavy uppercase headline -->
+                            <h1 class="hero-headline glitch-text" data-text="READY TO START YOUR FIRST COURSE">READY TO
+                                START YOUR FIRST COURSE</h1>
+
+                            <!-- Subtext -->
+                            <p class="hero-subtext">Your cognitive patterns show great momentum — keep up the multiverse
+                                pace!</p>
+
+                            <!-- Primary CTA: Neo-brutalist button with cyan/neon-blue fill, black border, offset drop shadow -->
+                            <div class="hero-cta-wrap">
+                                <button class="neo-btn neo-btn--cyan" id="hero-cta-btn">
+                                    <span>Start First Course</span>
+                                    <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12" />
+                                        <polyline points="12 5 19 12 12 19" />
+                                    </svg>
+                                </button>
+                                <span class="hero-sub-badge">🔥 120 XP Ready to Claim</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Queue Card (30% width) -->
+                    <div class="review-queue-card neo-card">
+                        <div class="queue-header">
+                            <div class="queue-title-wrap">
+                                <span class="queue-icon">📋</span>
+                                <h2 class="queue-title">Daily Review Queue</h2>
+                            </div>
+                            <span class="queue-status-tag">ACTIVE</span>
+                        </div>
+
+                        <div class="queue-metric-box neo-box">
+                            <div class="queue-badge-row">
+                                <div class="queue-checkmark-badge">✓</div>
+                                <div class="queue-counter-wrap">
+                                    <span class="queue-count-number">08</span>
+                                    <span class="queue-count-label">Cards Ready</span>
+                                </div>
+                            </div>
+                            <p class="queue-desc">Review your spaced-repetition neural nodes before dimension reset.</p>
+                            <div class="queue-progress-bar">
+                                <div class="queue-progress-fill" style="width: 65%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Action Link: Bottom button reading "View Learning Wall >" -->
+                        <button class="neo-btn neo-btn--outline queue-cta-btn" id="btn-view-learning-wall">
+                            <span>View Learning Wall &gt;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ─── MIDDLE SECTION: NEURAL ACTIVITY & QUICK PROGRESS ─── -->
+                <div class="dashboard-middle-section">
+                    <!-- Weekly Activity Chart (Neural Output - 60% width) -->
+                    <div class="neural-activity-card neo-card">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <div class="accent-square accent-square--teal"></div>
+                                <h2 class="card-title">Weekly Neural Output</h2>
+                            </div>
+                            <!-- Weekly / Daily Dropdown Pill -->
+                            <div class="pill-dropdown-wrap">
+                                <select class="neo-dropdown-pill" id="neural-frequency-select"
+                                    aria-label="Frequency Range">
+                                    <option value="weekly">Weekly View</option>
+                                    <option value="daily">Daily View</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Data Visualization: 7-day vertical bar chart (S, M, T, W, T, F, S) with alternating teal and neon red brutalist solid bars -->
+                        <div class="neural-chart-wrap">
+                            <div class="neural-bar-chart" id="neural-bar-chart">
+                                <!-- Day 1: S (Sunday) - Teal -->
+                                <div class="neural-bar-col">
+                                    <div class="bar-track">
+                                        <div class="bar-fill bar-fill--teal" style="height: 45%" data-val="4.5h"
+                                            title="Sun: 4.5h Neural Output"></div>
+                                    </div>
+                                    <span class="bar-day-label">S</span>
+                                </div>
+                                <!-- Day 2: M (Monday) - Neon Red -->
+                                <div class="neural-bar-col">
+                                    <div class="bar-track">
+                                        <div class="bar-fill bar-fill--red" style="height: 75%" data-val="7.5h"
+                                            title="Mon: 7.5h Neural Output"></div>
+                                    </div>
+                                    <span class="bar-day-label">M</span>
+                                </div>
+                                <!-- Day 3: T (Tuesday) - Teal -->
+                                <div class="neural-bar-col">
+                                    <div class="bar-track">
+                                        <div class="bar-fill bar-fill--teal" style="height: 60%" data-val="6.0h"
+                                            title="Tue: 6.0h Neural Output"></div>
+                                    </div>
+                                    <span class="bar-day-label">T</span>
+                                </div>
+                                <!-- Day 4: W (Wednesday) - Neon Red -->
+                                <div class="neural-bar-col">
+                                    <div class="bar-track">
+                                        <div class="bar-fill bar-fill--red" style="height: 90%" data-val="9.0h"
+                                            title="Wed: 9.0h Neural Output"></div>
+                                    </div>
+                                    <span class="bar-day-label">W</span>
+                                </div>
+                                <!-- Day 5: T (Thursday) - Teal -->
+                                <div class="neural-bar-col">
+                                    <div class="bar-track">
+                                        <div class="bar-fill bar-fill--teal" style="height: 55%" data-val="5.5h"
+                                            title="Thu: 5.5h Neural Output"></div>
+                                    </div>
+                                    <span class="bar-day-label">T</span>
+                                </div>
+                                <!-- Day 6: F (Friday) - Neon Red -->
+                                <div class="neural-bar-col">
+                                    <div class="bar-track">
+                                        <div class="bar-fill bar-fill--red" style="height: 85%" data-val="8.5h"
+                                            title="Fri: 8.5h Neural Output"></div>
+                                    </div>
+                                    <span class="bar-day-label">F</span>
+                                </div>
+                                <!-- Day 7: S (Saturday) - Teal -->
+                                <div class="neural-bar-col">
+                                    <div class="bar-track">
+                                        <div class="bar-fill bar-fill--teal" style="height: 40%" data-val="4.0h"
+                                            title="Sat: 4.0h Neural Output"></div>
+                                    </div>
+                                    <span class="bar-day-label">S</span>
+                                </div>
+                            </div>
+
+                            <div class="chart-footer-metrics">
+                                <div class="chart-stat-chip">
+                                    <span class="chip-dot chip-dot--teal"></span>
+                                    <span>Teal Phase: Focus Work</span>
+                                </div>
+                                <div class="chart-stat-chip">
+                                    <span class="chip-dot chip-dot--red"></span>
+                                    <span>Red Phase: Rapid Sprint</span>
+                                </div>
+                                <div class="chart-total-stat">
+                                    <span class="total-label">AVG SYNC:</span>
+                                    <span class="total-val">94.2%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Your Progress Widget (40% width) -->
+                    <div class="your-progress-card neo-card">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <div class="accent-square accent-square--yellow"></div>
+                                <h2 class="card-title">Your Progress</h2>
+                            </div>
+                            <span class="tag-pill tag-pill--yellow">LVL 14</span>
+                        </div>
+
+                        <div class="progress-tiles-grid">
+                            <!-- Metric 1: Boxed tile displaying [Icon] 0 Completed -->
+                            <div class="progress-metric-tile neo-box">
+                                <div class="metric-icon-wrap icon--completed">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                        <polyline points="22 4 12 14.01 9 11.01" />
+                                    </svg>
+                                </div>
+                                <div class="metric-info">
+                                    <div class="metric-counter" id="prog-completed-count">0</div>
+                                    <div class="metric-name">Completed</div>
+                                </div>
+                                <div class="metric-sub">Across All Tracks</div>
+                            </div>
+
+                            <!-- Metric 2: Boxed tile displaying [Icon] 0 In Queue -->
+                            <div class="progress-metric-tile neo-box">
+                                <div class="metric-icon-wrap icon--queue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 14 14" />
+                                    </svg>
+                                </div>
+                                <div class="metric-info">
+                                    <div class="metric-counter" id="prog-queue-count">0</div>
+                                    <div class="metric-name">In Queue</div>
+                                </div>
+                                <div class="metric-sub">Pending Missions</div>
+                            </div>
+                        </div>
+
+                        <!-- Mini Quick Action Banner -->
+                        <div class="progress-banner-box neo-box">
+                            <div class="banner-text-group">
+                                <span class="banner-title">⚡ Multiverse Readiness Index</span>
+                                <span class="banner-subtitle">Ready to calibrate neural track synchronization.</span>
+                            </div>
+                            <button class="neo-btn-sm neo-btn--yellow" id="btn-calibrate">Calibrate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ─── BOTTOM SECTION: RECOMMENDED MISSIONS & ACTIVE TRACKS ─── -->
+                <div class="dashboard-bottom-section">
+                    <!-- Multiverse Recommendation Card (Left) -->
+                    <div class="recommendation-card neo-card">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <div class="accent-square accent-square--red"></div>
+                                <h2 class="card-title">Multiverse Recommendation</h2>
+                            </div>
+                            <!-- Dual pill badges: CS/AI, Domain Track -->
+                            <div class="dual-badge-wrap">
+                                <span class="tag-pill tag-pill--cyan">CS / AI</span>
+                                <span class="tag-pill tag-pill--magenta">Domain Track</span>
+                            </div>
+                        </div>
+
+                        <div class="mission-content-box neo-box">
+                            <div class="mission-top-row">
+                                <h3 class="mission-title">Multiverse Neural Architectures & Transformer Logic</h3>
+                                <!-- Electric yellow duration/time badge -->
+                                <span class="tag-pill tag-pill--yellow mission-time-badge">⏱️ 4.5 HOURS</span>
+                            </div>
+
+                            <p class="mission-curriculum-overview">
+                                <strong>Curriculum Overview:</strong> Deep dive into dimensional neural weights,
+                                multi-head attention matrix projections, and zero-shot multiverse inference pipelines
+                                across Earth-1610 clusters.
+                            </p>
+
+                            <div class="mission-milestones-row">
+                                <div class="milestone-chip">🕸️ 6 Modules</div>
+                                <div class="milestone-chip">⚡ 18 Interactive Labs</div>
+                                <div class="milestone-chip">💎 450 XP Reward</div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Button: "Start Mission" button with bold neon-red outline and hard-edge drop shadow -->
+                        <div class="mission-action-row">
+                            <button class="neo-btn neo-btn--red" id="btn-start-mission">
+                                <span>Start Mission</span>
+                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </button>
+                            <span class="mission-hint">⚡ Prerequisite: Web Fundamentals completed</span>
+                        </div>
+                    </div>
+
+                    <!-- Project/Resource Shelf (Right companion card) -->
+                    <div class="project-shelf-card neo-card">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <div class="accent-square accent-square--teal"></div>
+                                <h2 class="card-title">Project & Lab Shelf</h2>
+                            </div>
+                            <span class="tag-pill tag-pill--yellow">3 Active Drafts</span>
+                        </div>
+
+                        <div class="shelf-items-list" id="dashboard-shelf-list">
+                            <!-- Lab Item 1 -->
+                            <div class="shelf-item neo-box">
+                                <div class="shelf-icon-badge badge--cyan">⚡</div>
+                                <div class="shelf-item-details">
+                                    <div class="shelf-item-title">Dimensional Quantum Shader</div>
+                                    <div class="shelf-item-sub">Upcoming Lab · WebGL / Three.js · Due Tomorrow</div>
+                                </div>
+                                <button class="neo-btn-icon-sm" title="Resume Lab">→</button>
+                            </div>
+
+                            <!-- Lab Item 2 -->
+                            <div class="shelf-item neo-box">
+                                <div class="shelf-icon-badge badge--red">🕸️</div>
+                                <div class="shelf-item-details">
+                                    <div class="shelf-item-title">Spider-Bot Autonomous Agent</div>
+                                    <div class="shelf-item-sub">Recent Project Draft · Python / PyTorch · 65% Ready
+                                    </div>
+                                </div>
+                                <button class="neo-btn-icon-sm" title="Resume Project">→</button>
+                            </div>
+
+                            <!-- Lab Item 3 -->
+                            <div class="shelf-item neo-box">
+                                <div class="shelf-icon-badge badge--magenta">🧬</div>
+                                <div class="shelf-item-details">
+                                    <div class="shelf-item-title">Multiverse Spaced Repetition Engine</div>
+                                    <div class="shelf-item-sub">Interview Sandbox · Data Structures · New</div>
+                                </div>
+                                <button class="neo-btn-icon-sm" title="Explore Sandbox">→</button>
+                            </div>
+                        </div>
+
+                        <button class="neo-btn neo-btn--outline shelf-view-all" id="btn-view-all-projects">
+                            <span>Open Full Multiverse Lab Shelf &gt;</span>
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ===== TAB 2: COURSE PAGE ===== -->
+            <section class="page page--course" id="page-course">
+                <div class="page-top-header neo-box">
+                    <div class="page-title-wrap">
+                        <span class="tag-pill tag-pill--red">DIMENSIONAL CATALOG</span>
+                        <h1 class="page-title glitch-text" data-text="COURSE DIRECTORY">COURSE DIRECTORY</h1>
+                        <p class="page-desc">Master cross-dimensional engineering, artificial intelligence, and software
+                            paradigms across the multiverse.</p>
+                    </div>
+                    <div class="filter-bar">
+                        <button class="filter-btn active" data-filter="all">All Tracks (15)</button>
+                        <button class="filter-btn" data-filter="ai-ml">🤖 AI & Machine Learning (5)</button>
+                        <button class="filter-btn" data-filter="web-dev">💻 Full Stack Web Dev (5)</button>
+                        <button class="filter-btn" data-filter="ui-ux">🎨 UI/UX & Design (5)</button>
+                        <button class="filter-btn" data-filter="in-progress">In Progress</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+                </div>
+                <div class="courses-full-grid" id="courses-full-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- ===== TAB 3: MY LEARNING PAGE ===== -->
+            <section class="page page--my-learning" id="page-my-learning">
+                <div class="page-top-header neo-box">
+                    <div class="page-title-wrap">
+                        <span class="tag-pill tag-pill--cyan">ACTIVE SYNC</span>
+                        <h1 class="page-title glitch-text" data-text="MY LEARNING REPOSITORY">MY LEARNING REPOSITORY
+                        </h1>
+                        <p class="page-desc">Your enrolled syllabus, ongoing modules, and neural memory checkpoint
+                            history.</p>
+                    </div>
+                </div>
+                <div class="my-learning-grid" id="my-learning-grid">
+                    <!-- Populated dynamically -->
+                </div>
+            </section>
+
+            <!-- ===== TAB 4: PROJECTS PAGE ===== -->
+            <section class="page page--projects" id="page-projects">
+                <div class="page-top-header neo-box">
+                    <div class="page-title-wrap">
+                        <span class="tag-pill tag-pill--yellow">MULTIVERSE LABS</span>
+                        <h1 class="page-title glitch-text" data-text="PROJECT SHOWCASE">PROJECT SHOWCASE</h1>
+                        <p class="page-desc">Real-world production builds, full-stack prototypes, and open-source
+                            contributions.</p>
+                    </div>
+                </div>
+                <div class="projects-full-grid" id="projects-full-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- ===== TAB 5: INTERVIEW PREP PAGE ===== -->
+            <section class="page page--interview-prep" id="page-interview-prep">
+                <div class="page-top-header neo-box">
+                    <div class="page-title-wrap">
+                        <span class="tag-pill tag-pill--magenta">FAANG & MULTIVERSE DRILLS</span>
+                        <h1 class="page-title glitch-text" data-text="INTERVIEW PREP ARENA">INTERVIEW PREP ARENA</h1>
+                        <p class="page-desc">Algorithmic duels, system architecture simulations, and behavioral
+                            telemetry coaching.</p>
+                    </div>
+                </div>
+                <div class="interview-prep-grid">
+                    <div class="prep-card neo-card">
+                        <div class="card-header">
+                            <h2 class="card-title">⚔️ Daily Algorithmic Duel</h2>
+                            <span class="tag-pill tag-pill--red">HARD</span>
+                        </div>
+                        <div class="neo-box prep-detail-box">
+                            <h3>Multiverse Graph Traversal (Shortest Quantum Path)</h3>
+                            <p>Find the minimum energy hops across 12 dimensional nodes with non-linear distortion
+                                weights.</p>
+                            <div class="prep-tags">
+                                <span class="project-tag">Dijkstra</span>
+                                <span class="project-tag">Dynamic Programming</span>
+                                <span class="project-tag">Python</span>
+                            </div>
+                        </div>
+                        <button class="neo-btn neo-btn--cyan" style="margin-top: 16px;">Launch Code Arena</button>
+                    </div>
+
+                    <div class="prep-card neo-card">
+                        <div class="card-header">
+                            <h2 class="card-title">🛡️ System Design Arena</h2>
+                            <span class="tag-pill tag-pill--cyan">MID-LEVEL</span>
+                        </div>
+                        <div class="neo-box prep-detail-box">
+                            <h3>Design a Zero-G Spaced Repetition Web Scaler</h3>
+                            <p>Scale real-time telemetry events for 500,000 active multiverse learners using WebSockets
+                                and Redis.</p>
+                            <div class="prep-tags">
+                                <span class="project-tag">Kafka</span>
+                                <span class="project-tag">Redis</span>
+                                <span class="project-tag">Architecture</span>
+                            </div>
+                        </div>
+                        <button class="neo-btn neo-btn--red" style="margin-top: 16px;">Start Design Canvas</button>
+                    </div>
+                </div>
+
+                <!-- ─── Interactive AI Interview Coach Chatbox Block ─── -->
+                <div class="prep-chatbox-card neo-card" style="margin-top: 28px;">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <div class="accent-square accent-square--yellow"></div>
+                            <h2 class="card-title">🤖 Multiverse AI Mock Interview Coach</h2>
+                        </div>
+                        <div class="chat-header-actions">
+                            <span class="tag-pill tag-pill--yellow">⚡ GPT-4o NEURAL SYNC</span>
+                            <span class="tag-pill tag-pill--cyan">LIVE DRILL</span>
+                        </div>
+                    </div>
+
+                    <div class="chatbox-container neo-box">
+                        <!-- Chat message thread -->
+                        <div class="chat-messages-thread" id="chat-messages-thread">
+                            <div class="chat-msg chat-msg--bot">
+                                <div class="chat-avatar avatar--bot">🕷️</div>
+                                <div class="chat-bubble neo-box">
+                                    <div class="chat-sender">M.O.D.E.L. Interview AI <span class="chat-timestamp">Just
+                                            now</span></div>
+                                    <p>Welcome to the <strong>Multiverse Interview Arena</strong>, Miles! 👋</p>
+                                    <p>I'm your real-time FAANG & Multiverse AI Coach. Choose a topic below or type your
+                                        technical answer to begin mock simulation:</p>
+                                    <div class="chat-quick-replies">
+                                        <button class="quick-reply-btn"
+                                            data-reply="Explain how to detect cycles in a directed quantum graph">🕸️
+                                            Graph Cycles</button>
+                                        <button class="quick-reply-btn"
+                                            data-reply="How would you design a distributed cache with LRU eviction?">⚡
+                                            Distributed Cache</button>
+                                        <button class="quick-reply-btn"
+                                            data-reply="What is the difference between supervised and self-supervised learning in transformers?">🤖
+                                            Transformer Attention</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat input bar -->
+                        <form class="chat-input-form" id="chat-input-form">
+                            <input type="text" class="chat-input neo-input" id="chat-input-field"
+                                placeholder="Type your answer, ask for hints, or paste pseudo-code..."
+                                autocomplete="off">
+                            <button type="submit" class="neo-btn neo-btn--cyan chat-send-btn">
+                                <span>Send</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16"
+                                    height="16">
+                                    <line x1="22" y1="2" x2="11" y2="13" />
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== TAB 6: ANALYTICS PAGE ===== -->
+            <section class="page page--analytics" id="page-analytics">
+                <div class="page-top-header neo-box">
+                    <div class="page-title-wrap">
+                        <span class="tag-pill tag-pill--cyan">TELEMETRY</span>
+                        <h1 class="page-title glitch-text" data-text="NEURAL ANALYTICS">NEURAL ANALYTICS</h1>
+                        <p class="page-desc">Comprehensive learning metrics, velocity telemetry, and mastery breakdowns.
+                        </p>
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="card analytics-stat-card neo-card">
+                        <div class="analytics-stat-icon" style="--accent: var(--neon-red)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                            </svg>
+                        </div>
+                        <div class="analytics-stat-value">87%</div>
+                        <div class="analytics-stat-label">Completion Rate</div>
+                        <div class="analytics-stat-change positive">+12% vs last month</div>
+                    </div>
+                    <div class="card analytics-stat-card neo-card">
+                        <div class="analytics-stat-icon" style="--accent: var(--neon-cyan)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <div class="analytics-stat-value">2.4h</div>
+                        <div class="analytics-stat-label">Avg. Daily Study</div>
+                        <div class="analytics-stat-change positive">+0.3h vs last month</div>
+                    </div>
+                    <div class="card analytics-stat-card neo-card">
+                        <div class="analytics-stat-icon" style="--accent: var(--neon-yellow)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <div class="analytics-stat-value">4,820</div>
+                        <div class="analytics-stat-label">Total XP Earned</div>
+                        <div class="analytics-stat-change positive">+640 this week</div>
+                    </div>
+                    <div class="card analytics-stat-card neo-card">
+                        <div class="analytics-stat-icon" style="--accent: var(--neon-red)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                            </svg>
+                        </div>
+                        <div class="analytics-stat-value">#14</div>
+                        <div class="analytics-stat-label">Leaderboard Rank</div>
+                        <div class="analytics-stat-change positive">↑ 3 positions</div>
+                    </div>
+
+                    <div class="card card--wide neo-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Weekly Learning Hours</h2>
+                        </div>
+                        <div class="chart-wrapper chart-wrapper--large">
+                            <canvas id="analytics-bar-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card card--wide neo-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Skills Breakdown</h2>
+                        </div>
+                        <div class="skills-breakdown" id="skills-breakdown">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== TAB 7: PROFILE PAGE ===== -->
+            <section class="page page--profile" id="page-profile">
+                <div class="page-top-header neo-box">
+                    <div class="page-title-wrap">
+                        <span class="tag-pill tag-pill--red">STUDENT IDENTITY</span>
+                        <h1 class="page-title glitch-text" data-text="MILES MORALES // EARTH-1610">MILES MORALES //
+                            EARTH-1610</h1>
+                        <p class="page-desc">Brooklyn Visions Academy · Multiverse Scholar Level 14 · Bio-Electric
+                            Engineering Track.</p>
+                    </div>
+                </div>
+                <div class="profile-layout-grid">
+                    <div class="profile-main-card neo-card">
+                        <div class="profile-avatar-banner">
+                            <div class="profile-avatar-large">M</div>
+                            <div class="profile-user-meta">
+                                <h2>Miles Morales</h2>
+                                <p class="highlight-cyan">miles.morales@visionacademy.edu</p>
+                                <span class="tag-pill tag-pill--yellow" style="margin-top: 8px;">🔥 12 DAY STREAK
+                                    ACTIVE</span>
+                            </div>
+                        </div>
+                        <div class="profile-stats-row neo-box" style="margin-top: 24px;">
+                            <div class="profile-stat-item">
+                                <span class="stat-big">4,820</span>
+                                <span class="stat-sub">XP Points</span>
+                            </div>
+                            <div class="profile-stat-item">
+                                <span class="stat-big">#14</span>
+                                <span class="stat-sub">Multiverse Rank</span>
+                            </div>
+                            <div class="profile-stat-item">
+                                <span class="stat-big">9</span>
+                                <span class="stat-sub">Badges Earned</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-badges-card neo-card">
+                        <div class="card-header">
+                            <h2 class="card-title">🏆 Multiverse Badges</h2>
+                        </div>
+                        <div class="badges-grid-wrap">
+                            <div class="badge-item neo-box"><span class="badge-emoji">⚡</span><strong>Zero-G
+                                    Pioneer</strong></div>
+                            <div class="badge-item neo-box"><span class="badge-emoji">🕸️</span><strong>Web
+                                    Mastery</strong></div>
+                            <div class="badge-item neo-box"><span class="badge-emoji">🔥</span><strong>12-Day
+                                    Leaper</strong></div>
+                            <div class="badge-item neo-box"><span class="badge-emoji">🤖</span><strong>Neural
+                                    Sync</strong></div>
+                            <div class="badge-item neo-box"><span class="badge-emoji">💎</span><strong>Diamond
+                                    Mind</strong></div>
+                            <div class="badge-item neo-box"><span class="badge-emoji">🎨</span><strong>Glitch
+                                    Artist</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Comic Halftone & Web Overlays -->
+    <div class="halftone-overlay"></div>
+    <div class="web-lines"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
